@@ -42,9 +42,11 @@ export class AppComponent implements OnInit{
   }
 
   excluir(tarefa: Tarefa){
-    this.service.excluir(tarefa.id).subscribe({
-      next: (response) => this.listarTarefas()
-    });
+    if(window.confirm('Confirma a exclusão desta Tarefa ?')){
+      this.service.excluir(tarefa.id).subscribe({
+        next: (response) => this.listarTarefas()
+      });
+    }
   }
 
   concluir(tarefa: Tarefa){
